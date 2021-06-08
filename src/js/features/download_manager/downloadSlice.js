@@ -18,13 +18,22 @@ export const downloadSlice = createSlice({
                 ...state.checkedState,checkedState:state.checkedState.filter(title => title !== obj.payload.title)
           
             }
+        }, addAllToDownload: (state,arr) => {
+            return {...state.value,value:arr.payload
+                ,...state.checkedState, checkedState:[...state.checkedState]}
+        } ,
+        removeAllFromDownload: (state) => {
+            return {...state.value,value:[]
+                ,...state.checkedState, checkedState:[...state.checkedState]}
         }
+        
+    
 
         
     }
 })
 
 
-export const {addDownload, removeDownload} = downloadSlice.actions
+export const {addDownload, removeDownload,addAllToDownload,removeAllFromDownload} = downloadSlice.actions
 
 export default downloadSlice.reducer

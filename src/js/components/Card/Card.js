@@ -6,7 +6,7 @@ import {
   addDownload,
   removeDownload,
 } from "../../features/download_manager/downloadSlice";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Notificiation from "../Notification/Notification";
 
 const CardContainer = styled.div`
@@ -50,18 +50,28 @@ const DownloadDiv = styled.div`
   position: absolute;
 `;
 
-function Card({ title, description, dateCreated, imageUrl ,setNotificationState}) {
+function Card({ title, description, dateCreated, imageUrl ,setNotificationState,isChecked}) {
+
+
+
+
+
 
   const dispatch = useDispatch();
   const imgArray = useSelector((state) => state.download.value);
 
-  const checkBoxHandler = (e) => {
-    if (e.target.checked) {
+  const [checkedState,setCheckedState] = useState(false)
+
+
+  const checkBoxHandler = () => {
+    if (!checkedState) {
       showNotificationTimer(3000,false)
       dispatch(addDownload({imageUrl,title}));
+      setCheckedState(!checkedState)
     } else {
       showNotificationTimer(3000,true)
       dispatch(removeDownload({imageUrl,title}));
+      setCheckedState(!checkedState)
     }
   };
 
@@ -73,11 +83,13 @@ function Card({ title, description, dateCreated, imageUrl ,setNotificationState}
     },ms)
   }
 
-  const imgUrlArray = imgArray.map((obj) => obj.payload);
+
+
+  useEffect(() => {
+    if(imgArray) setCheckedState(imgArray.includes(imageUrl))
+  }, [imgArray])
 
   // Check state gets reset on filter, this function checks if it in the downloader array and rechecks the images marked for download
-  const autoCheckOnUpdate = () => imgUrlArray.includes(imageUrl);
-
 
 
   return (
@@ -85,9 +97,9 @@ function Card({ title, description, dateCreated, imageUrl ,setNotificationState}
       <CardContainer imageUrl={imageUrl}>
         <DownloadDiv>
           <input
-            defaultChecked={autoCheckOnUpdate}
             type={"checkbox"}
-            onClick={checkBoxHandler}
+            onChange={checkBoxHandler}
+            checked={checkedState}
           />
           <FontAwesomeIcon icon={faDownload} size={"lg"} cursor={"pointer"} />
         </DownloadDiv>
