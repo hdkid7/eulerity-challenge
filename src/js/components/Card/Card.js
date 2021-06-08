@@ -21,9 +21,7 @@ const CardContainer = styled.div`
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
-  &:hover {
-    transform: scale(1.05);
-  }
+ 
   margin: 0;
   img {
     height: 75%;
@@ -36,13 +34,19 @@ const CardContainer = styled.div`
 `;
 
 const CardDetails = styled.div`
-  text-align: center;
+text-align: left;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 25%;
+  height: 23%;
+  margin:0em 0.7em 0.7em 2.7em;
+  font-size:0.9em;
+
+
   p {
     font-size: 1.1em;
+    line-height:1.2em;
   }
 `;
 
@@ -50,7 +54,7 @@ const DownloadDiv = styled.div`
   position: absolute;
 `;
 
-function Card({ title, description, dateCreated, imageUrl ,setNotificationState,isChecked}) {
+function Card({ title, description, created, imageUrl ,setNotificationState,alt}) {
 
 
 
@@ -104,11 +108,11 @@ function Card({ title, description, dateCreated, imageUrl ,setNotificationState,
           <FontAwesomeIcon icon={faDownload} size={"lg"} cursor={"pointer"} />
         </DownloadDiv>
 
-        <img src={imageUrl} />
+        <img src={imageUrl} alt={alt}/>
         <CardDetails>
-          <p className="card-title">Title: {title}</p>
-          <p className="card-description">Description: {description}</p>
-          <p className="card-dateCreated">Date Created: {dateCreated}</p>
+          <p className="card-title"><span style={{fontWeight:"bold"}}>Title: </span>{title}</p>
+          <p className="card-description"><span style={{fontWeight:"bold"}}>Description: </span>{description}</p>
+          <p className="card-dateCreated"><span style={{fontWeight:"bold"}}>Date Created: </span>{created}</p>
         </CardDetails>
       </CardContainer>
     </>

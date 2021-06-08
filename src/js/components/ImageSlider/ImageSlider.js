@@ -16,7 +16,7 @@ export default function ImageSlider({components}) {
     dots: true,
     arrows:false,
    infinite:false,
-   center:true,
+   centerMode:true,
     speed: 300,
     lazyLoad: true,
      slidesToShow: 3,
