@@ -1,15 +1,17 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import logo from "../../../assets/animal-logo.png";
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const StyledHeader = styled.div`
-  height: 13vh;
-  background-color: #ff4f58ff;
+  height: 12vh;
+  background-color: #d2691e; 
   width: 100%;
   display: flex;
+  color:white;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+      border-bottom: 4px black solid;
 `;
 
 const Links = styled.div`
@@ -19,7 +21,11 @@ const Links = styled.div`
 
   a {
     text-decoration: none;
-    color: black;
+    color: white;
+    font-weight:bold;
+    font-size:17px;
+    margin:1em;
+    
   }
 `;
 
@@ -28,12 +34,12 @@ function Header() {
    
       <StyledHeader>
         <Links className="links">
-          <NavLink activeClassName="active-link" to="/about">ABOUT ME</NavLink>
-          <NavLink activeClassName="active-link" exact to="/">IMAGE GALLERY</NavLink>
+          <NavLink activeClassName="active-link" to="/about">ABOUT</NavLink>
+          <NavLink activeClassName="active-link" exact to="/">GALLERY</NavLink>
         </Links>
         <div className="logo-title">
           <img
-            style={{ borderRadius: "50%", height: "5em" }}
+            style={{ borderRadius: "50%", height: "3em" }}
             src={logo}
             alt="animal logo"
           />

@@ -16,6 +16,8 @@ padding: 10px 25px;
   position: relative;
   display: inline-block;
 
+  margin-bottom:1em;
+
   &:after{
         position: absolute;
   content: "";

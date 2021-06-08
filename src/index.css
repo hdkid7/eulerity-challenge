@@ -52,12 +52,14 @@ table {
 
 
 body{
-    background-color: #c0c0c0;
+    background-color: #2E9CCA;
+	  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+
 }
 
 .slick-slide{
-    padding-top:2em;
-    padding-bottom: 5em;
+    padding-top:1em;
+    padding-bottom: 2em;
 }
 
 .slick-current{
@@ -69,8 +71,9 @@ body{
     outline: none;
 }
 .slick-track{
-	margin-top: 2em;
+	margin-top: 1em;
 	cursor: grab;
+    margin-bottom: 1em;
 }
 
 .slick-track:active{
@@ -78,7 +81,7 @@ body{
 }
 
 .active-link{
-	border-bottom: 3px black solid;
+	border-bottom: 3px white solid;
 	
 }
 

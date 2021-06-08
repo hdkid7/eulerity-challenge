@@ -1,15 +1,16 @@
 import {
-  BrowserRouter as Router,
+  
   Switch,
   Route,
-  Link,
+ 
 } from "react-router-dom";
 
-import SliderView from "../SliderView/SliderView";
+import SliderView from "../../Views/SliderView";
 
 import store from "../../store"
 import Header from "../Header/Header";
 import {Provider} from "react-redux"
+import AboutView from "../../Views/AboutView";
 const App = () => {
 
   return (
@@ -17,7 +18,7 @@ const App = () => {
         <Header />
             <Switch>
               <Route path="/about">
-                <h1>HELLO ABOUT</h1>
+                <AboutView/>
               </Route>
               <Route path="/">
                 <SliderView />

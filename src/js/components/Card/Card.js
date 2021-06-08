@@ -9,6 +9,20 @@ import {
 import { useState,useEffect } from "react";
 import Notificiation from "../Notification/Notification";
 
+
+const StyledCheckBox = styled.input`
+
+    -webkit-appearance:none;
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+
+
+`
+
+
 const CardContainer = styled.div`
   border-radius: 10px;
   height: 58vh;
@@ -45,13 +59,17 @@ text-align: left;
 
 
   p {
-    font-size: 1.1em;
+    font-size: 0.6em;
     line-height:1.2em;
   }
 `;
 
 const DownloadDiv = styled.div`
   position: absolute;
+  border: 3px black solid;
+    margin: 0.3em;
+    border-radius: 10px;
+    padding:0.2em;
 `;
 
 function Card({ title, description, created, imageUrl ,setNotificationState,alt}) {
@@ -69,11 +87,11 @@ function Card({ title, description, created, imageUrl ,setNotificationState,alt}
 
   const checkBoxHandler = () => {
     if (!checkedState) {
-      showNotificationTimer(3000,false)
+      showNotificationTimer(2000,false)
       dispatch(addDownload({imageUrl,title}));
       setCheckedState(!checkedState)
     } else {
-      showNotificationTimer(3000,true)
+      showNotificationTimer(2000,true)
       dispatch(removeDownload({imageUrl,title}));
       setCheckedState(!checkedState)
     }
@@ -91,7 +109,7 @@ function Card({ title, description, created, imageUrl ,setNotificationState,alt}
 
   useEffect(() => {
     if(imgArray) setCheckedState(imgArray.includes(imageUrl))
-  }, [imgArray])
+  }, [imgArray,imageUrl])
 
   // Check state gets reset on filter, this function checks if it in the downloader array and rechecks the images marked for download
 
@@ -104,8 +122,11 @@ function Card({ title, description, created, imageUrl ,setNotificationState,alt}
             type={"checkbox"}
             onChange={checkBoxHandler}
             checked={checkedState}
+
+            style = {{cursor:"pointer",height:"2em",width: "24px"}}
           />
-          <FontAwesomeIcon icon={faDownload} size={"lg"} cursor={"pointer"} />
+          <FontAwesomeIcon icon={faDownload} size={"sm"} style = {{marginBottom: "0.17em",
+    marginLeft: "0.3em"}}  />
         </DownloadDiv>
 
         <img src={imageUrl} alt={alt}/>

@@ -38,21 +38,21 @@ const comeInThenFadeOut = keyframes`
 `
 
 const StyledNotification = styled.div`
-
+    z-index:99999;
     position: absolute;
-    height: 7em;
+    height: 5em;
     display: flex;
 
     align-items: center;
  
     right: 0;
     text-align: center;
-    top: 5em;
+    top: 2em;
     background: ${props => props.removed ? "red" : "green"};
-    width: 25em;
+    width: 20em;
     color:${props => props.removed ? "white" : "black"};
 
-    animation: ${comeInThenFadeOut} 3s ease-in-out;
+    animation: ${comeInThenFadeOut} 2s ease-in-out;
     animation-fill-mode:forwards;
 
 
@@ -67,15 +67,15 @@ const Notificiation = ({title,imageUrl,isRemoved}) =>
     {isRemoved ? 
 
         <StyledNotification removed>
-            <p style = {{width:"50%",lineHeight: "1.3em"}}>Image "{title}" removed from list 😰</p>
-            <img style = {{width:"50%",height:"100%",objectFit:"contain"}} src={imageUrl} />
+            <p style = {{marginLeft:"1.5em",width:"50%",lineHeight: "1.1em",fontSize:"0.8em"}}>Image "{title}" removed from list 😰</p>
+            <img style = {{width:"50%",height:"100%",objectFit:"contain"}} src={imageUrl} alt = {title} />
         </StyledNotification>
         :
 
 
         <StyledNotification>
-            <p>Image "{title}"" added to list 😁</p>
-            <img style={{width:"50%",height:"100%",objectFit:"contain"}} src={imageUrl} />
+            <p style = {{marginLeft:"1.5em",width:"50%",lineHeight: "1.1em",fontSize:"0.8em"}}>Image "{title}" added to list 😁</p>
+            <img style={{width:"50%",height:"100%",objectFit:"contain"}} src={imageUrl} alt = {title} />
         </StyledNotification>
     
     
