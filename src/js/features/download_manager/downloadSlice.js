@@ -9,7 +9,6 @@ export const downloadSlice = createSlice({
     },
     reducers:{
         addDownload: (state,obj) => {
-            console.log(obj)
             return {...state.value,value:[...state.value,obj.payload.imageUrl]
                 ,checkedState:[...state.checkedState,obj.payload.title]}
         } ,
@@ -19,7 +18,6 @@ export const downloadSlice = createSlice({
           
             }
         }, addAllToDownload: (state,obj) => {
-            console.log(obj)
             return {...state.value,value:obj.payload.arr
                 ,...state.checkedState, checkedState:obj.payload.title}
         } ,
