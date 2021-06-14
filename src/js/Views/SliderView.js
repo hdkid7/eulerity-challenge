@@ -38,7 +38,7 @@ const InputDiv = styled.div`
   flex-wrap: wrap;
 `;
 
-function Example() {
+function SliderView() {
   const dispatch = useDispatch();
 
   const [data, setData] = useState([]);
@@ -63,6 +63,7 @@ function Example() {
     );
 
   const imgArray = useSelector((state) => state.download.value);
+  
   const titleArray = useSelector((state) => state.download.checkedState);
 
   const [notificationState, setNotificationState] = useState({
@@ -107,6 +108,7 @@ function Example() {
       })
     );
   };
+
   // used for arrow cycle functionality (div must be focused)
   const autoFocusRef = useRef();
   function focus() {
@@ -176,4 +178,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default SliderView;

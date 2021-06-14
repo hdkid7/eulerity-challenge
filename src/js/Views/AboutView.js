@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import image from "../../assets/self-img.jpeg"
 
 const AboutContainer = styled.div`
   height: 80vh;
@@ -18,7 +19,7 @@ const StyledImg = styled.img`
 
   position: relative;
   width: 369px;
-  height: 550px;
+ 
   background: #2e9cca;
   border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
   color: white;
@@ -61,8 +62,8 @@ const AboutView = () => {
         }}
       >
         <StyledImg
-          src={
-            "https://images.unsplash.com/photo-1614240755225-99d3990d99ed?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+         src={
+           image
           }
         />
       </div>
